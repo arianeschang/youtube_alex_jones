@@ -55,7 +55,7 @@ def get_response(query_type, parameters):
 	        parameters - list of tuples correpsonding to the parameter names and their values in our query 
 	'''
 	base_url = 'https://www.googleapis.com/youtube/v3/'
-	key = "AIzaSyBXb1DX2EjUyuL9DJpQmfg5t8WDWtxuxjM"
+	key = "mykey"
 
 	parameters.append(('key', key))
 
