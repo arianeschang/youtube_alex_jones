@@ -106,7 +106,7 @@ def get_value(dictionary, key):
 def main():
 	username = "TheAlexJonesChannel"
 
-	# If we haven't yet extracted the data
+	# Get the videos from the given username
 	video_data = get_all_videos(username)
 
 	# Write our data to a CSV
