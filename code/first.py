@@ -25,14 +25,12 @@ def get_all_videos(username):
 			video_snippet = video['snippet']
 
 			if video_snippet['publishedAt'] > '2018-05-05T00:00:00Z':
-				print video_snippet['publishedAt']
 				continue
 			elif video_snippet['publishedAt'] < '2015-01-01T00:00:00Z':
 				return video_data
 
 			this_video_data = get_video_data(video_snippet, channel_Id)
 			video_data.append(this_video_data)
-			print this_video_data[3]
 
 		# Get the next video. 
 		next_video = video_params + [('pageToken', video_search['nextPageToken'])]
@@ -45,7 +43,7 @@ def get_all_videos(username):
 
 		# If there's no more results, we break
 		if len(video_search['items']) == 0:
-			break
+			return video_df
 
 	return video_df
 
@@ -111,11 +109,8 @@ def main():
 	# If we haven't yet extracted the data
 	video_data = get_all_videos(username)
 
-	# If we have the dataset pickled
-	#video_data = pd.read_pickle("data/video_data.pkl")
-
 	# Write our data to a CSV
-	#video_data.to_csv("data/video_data.csv", sep=',', encoding="utf-8", index = False, header=True)
+	video_data.to_csv("data/video_data.csv", sep=',', encoding="utf-8", index = False, header=True)
 
 
 	
