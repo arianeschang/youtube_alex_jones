@@ -5,6 +5,13 @@ pd.set_option('display.max_columns', None)
 
 def get_all_videos(username):
 
+	'''
+    Make a pandas dataframe with all the videos uploaded by this user. 
+    
+    Inputs: username - the user whose videos we want to list
+    Returns: the dataframe with video info
+    '''
+
 	# Get playlist with all uploads 
 	playlist_params = [('part', 'contentDetails,id'), ('forUsername', username)]
 	playlist_info = get_response('channels?', playlist_params)
@@ -110,13 +117,7 @@ def main():
 	video_data = get_all_videos(username)
 
 	# Write our data to a CSV
-	video_data.to_csv("data/video_data.csv", sep=',', encoding="utf-8", index = False, header=True)
-
-
-	
-
-
-
+	video_data.to_csv("data/video_metadata.csv", sep=',', encoding="utf-8", index = False, header=True)
 
 if __name__ == "__main__":
     main()
